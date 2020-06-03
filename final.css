@@ -1,0 +1,141 @@
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+    margin:0;
+    padding:0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html,body {
+    margin:0;
+    padding:0;
+    background-color: rgb(19, 95, 128) !important;
+    padding-top:40px;
+}
+
+.navbar {
+    background-color: #2BBEFF; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar a {
+    color: #F5F6F3;
+    text-shadow: 5px;
+
+}
+
+.navbar a:hover {
+    font-style: italic;
+    color: #F5F6F3;
+
+}
+
+#support {
+    color: #F5F6F3;
+    font-weight: bold;
+}
+
+.card {
+    visibility: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 5px;
+    background-color: rgb(247, 247, 247) !important;
+}
+
+#Activity#Card {
+    visibility: visible !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    background-color: #F5F6F3 !important;
+}
+
+i {
+    color: #2BBEFF;
+}
+
+.modal {
+    padding: 100px;
+}
+
+#modalText {
+    font-size: 12pt;
+}
+
+#useMy, #getZip {
+    font-size: 20px;
+    margin-left: 5px;
+    border-radius: 4px;
+    background-color: rgb(19, 95, 128);
+    border-color: #F5F6F3;
+    color: #F5F6F3;
+    font-weight: 600;
+}
+
+#useMy:hover, #getZip:hover {
+    cursor: pointer;
+    color: #2BBEFF;
+    border-color: #2BBEFF
+}
+
+#useMy:active, #getZip:active {
+    background-color: rgb(14, 73, 99);
+    border-color: #2BBEFF;
+    color: #2BBEFF;
+    transform: translateY(4px);
+}
+
+#modalButton {
+    margin-left: 25px;
+}
+
+
+.row {
+    background-color: rgb(19, 95, 128);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h5.card-subtitle {
+    margin-bottom: 20px;
+}
+
+img#weatherIcon {
+    background-color:  rgba(19, 95, 128, 0.3);
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+#weeklyWeather {
+    float: right;
+    justify-content: space-around;
+}
+
+#icon#list {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#weather1.row, #weather2.row, #weather3.row, #weather4.row, #weather5.row, #weather6.row, #weather7.row   {
+    background-color:  rgba(19, 95, 128, 0.3);
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+#day1,#day2,#day3,#day4,#day5,#day6,#day7,#des1,#des2,#des3,#des4,#des5,#des6,#des7 {
+    padding-top: 10px;
+}
+
+#img1,#img2,#img3,#img4,#img5,#img6,#img7 {
+    padding-right: 50px;
+}
+
+@media(min-width: 1080) {
+    #des1,#des2,#des3,#des4,#des5,#des6,#des7 {
+        display: none;
+    }
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="final.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Final Project Thingy</title>
+  </head>
+  <body onload = checkData()>
+    <div class = "container">
+      <div class = "row">
+      <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+        <a class="navbar-brand" href="/index.html">WeatherYouKnow</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="fas fa-bars"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/activities.html">Activities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><!--other nav bar link here --></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+    <div class = "row">
+      <div class = "col-md-3">
+        <button id = "useMy" onClick="getLocation()">Use My Location</button>
+      </div>
+      <div class="col-md-1.5">
+        <button id = "getZip" onClick="getZIP()">Use ZIP</button>
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" id="inputZip">
+      </div>    
+      <div class="col-md-3">
+        <p id="support"></p>
+      </div>
+    </div>  
+    <form id="form">
+    <div class = "row justify-content-md-center">
+      <div class = "col-lg-6">
+        <div class = "card" id = "Today's Weather Card">
+          <div class = "card-body" id = "Today's Weather Body">
+            <h5 class="card-title" id = "todayTemp">Current Temperature:&ensp;</h5>
+            <h6 id = "todayFeel">Feels Like: </h6>
+            <h6 id = "todayCloud">The Sky is: </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-lg-4">
+        <div class = "card" id = "Next 24 Hours Card">
+          <div class = "card-body" id = "Next 24 Hours Body">
+            <h5 class="card-title">The Next 24 Hours</h5>
+            <canvas id = "24hour" aria-label="line-chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class = "col-lg-4">
+        <div class = "card" id = "Tomorrow's Weather Card">
+          <div class = "card-body" id = "Tomorrow's Weather Body">
+            <h5 class="card-title">Tomorrow's Weather</h5>
+            <canvas id = "tomorrowChart" aria-label="line-chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class = "col-lg-4">
+        <div class = "card" id = "The Week Ahead Card">
+          <div class = "card-body" id = "The Week Ahead Body">
+            <h5 class="card-title">The Week Ahead</h5>
+            <canvas id = "weeklyChart" aria-label="line-chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "row justify-content-md-center"> 
+      <div class = "col-md-4">
+        <div class = "card" id = "Is It Raining Card">
+          <div class = "card-body" id = "Is It Raining Body">
+            <h5 class = "card-title">Is it raining?    <img id = "weatherIcon" src="" alt = "">
+              <button class="btn btn-primary" id="modalButton" data-toggle="modal" data-target="#weatherModal">Not happy with this?</button>
+                <div class = "modal" id="weatherModal">
+                  <div class = "modal-dialog modal-dialog-centered">
+                    <div class = "modal-content">
+                      <div class = "modal-header">
+                        <h5 class = "modal-title">That's too bad</h5>
+                        <button type = "button" class = "close" data-dismiss = "modal" aria-label = "Close">
+                          <span aria-hidden = "true">&times;</span>
+                        </button>
+                      </div>
+                      <div class = "modal-body">
+                        <p id = "modalText">Only the CIA can control the weather</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </h5>
+            <p id="raining"></p>
+            <h5 class = "card-subtitle">What about the rest of the week?</h5>
+            <div class = "row" id = "weather1">
+              <div class = "col-sm-3"><p id = "day1"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img1"></div>
+              <div class = "col-md-6"><p id = "des1"></p></div>
+            </div>
+            <div class = "row" id = "weather2">
+              <div class = "col-sm-3"><p id = "day2"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img2"></div>
+              <div class = "col-md-6"><p id = "des2"></p></div>
+            </div>
+            <div class = "row" id = "weather3">
+              <div class = "col-sm-3"><p id = "day3"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img3"></div>
+              <div class = "col-md-6"><p id = "des3"></p></div>
+            </div>
+            <div class = "row" id = "weather4">
+              <div class = "col-sm-3"><p id = "day4"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img4"></div>
+              <div class = "col-md-6"><p id = "des4"></p></div>
+            </div>
+            <div class = "row" id = "weather5">
+              <div class = "col-sm-3"><p id = "day5"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img5"></div>
+              <div class = "col-md-6"><p id = "des5"></p></div>
+            </div>
+            <div class = "row" id = "weather6">
+              <div class = "col-sm-3"><p id = "day6"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img6"></div>
+              <div class = "col-md-6"><p id = "des6"></p></div>
+            </div>
+            <div class = "row" id = "weather7">
+              <div class = "col-sm-3"><p id = "day7"></p></div>
+              <div class = "col-sm-1 d-flex justify-content-center"><img id = "img7"></div>
+              <div class = "col-md-6"><p id = "des7"></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class = "col-md-6">
+      <div class = "card" id = "Cloudy Card">
+        <div class = "card-body" id = "Cloudy Body">
+          <h5 class="card-title">How Cloudy Will it Be?</h5>
+          <canvas id = "cloudChart" aria-label="polar-chart" role="img"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+    <script src="final.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e5eb56307f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  </body>
+</html>
