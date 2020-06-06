@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Final Project Thingy</title>
   </head>
-  <body onload = checkData()>
+  <body id="body" onload = checkData()>
     <div class = "container">
       <div class = "row">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
@@ -25,7 +25,7 @@
               <a class="nav-link" href="/activities.html">Activities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><!--other nav bar link here --></a>
+              <button id="hidden" class="nav-link">spin to win</button>
             </li>
           </ul>
         </div>
@@ -36,11 +36,11 @@
       <div class = "col-md-3">
         <button id = "useMy" onClick="getLocation()">Use My Location</button>
       </div>
-      <div class="col-md-1.5">
+      <div class="col-md-6">
+        <div class="form-inline">
         <button id = "getZip" onClick="getZIP()">Use ZIP</button>
-      </div>
-      <div class="col-md-2">
         <input type="text" class="form-control" id="inputZip">
+        </div>
       </div>    
       <div class="col-md-3">
         <p id="support"></p>
@@ -58,8 +58,8 @@
         </div>
       </div>
     </div>
-    <div class = "row">
-      <div class = "col-lg-4">
+    <div class = "row justify-content-center">
+      <div class = "col-xl-4 col-lg-6 col-12">
         <div class = "card" id = "Next 24 Hours Card">
           <div class = "card-body" id = "Next 24 Hours Body">
             <h5 class="card-title">The Next 24 Hours</h5>
@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-      <div class = "col-lg-4">
+      <div class = "col-xl-4 col-lg-6 col-12">
         <div class = "card" id = "Tomorrow's Weather Card">
           <div class = "card-body" id = "Tomorrow's Weather Body">
             <h5 class="card-title">Tomorrow's Weather</h5>
@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class = "col-lg-4">
+      <div class = "col-xl-4 col-lg-6 col-12">
         <div class = "card" id = "The Week Ahead Card">
           <div class = "card-body" id = "The Week Ahead Body">
             <h5 class="card-title">The Week Ahead</h5>
@@ -83,13 +83,19 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class = "row justify-content-md-center"> 
-      <div class = "col-md-4">
+      <div class = "col-xl-4 col-lg-6 col-12">
+        <div class = "card" id = "Cloudy Card">
+          <div class = "card-body" id = "Cloudy Body">
+            <h5 class="card-title">How Cloudy Will it Be?</h5>
+            <canvas id = "cloudChart" aria-label="polar-chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class = "col-xl-4 col-12">
         <div class = "card" id = "Is It Raining Card">
           <div class = "card-body" id = "Is It Raining Body">
             <h5 class = "card-title">Is it raining?    <img id = "weatherIcon" src="" alt = "">
-              <button class="btn btn-primary" id="modalButton" data-toggle="modal" data-target="#weatherModal">Not happy with this?</button>
+              <button type="button" class="btn btn-primary" id="modalButton" data-toggle="modal" data-target="#weatherModal">Not happy with this?</button>
                 <div class = "modal" id="weatherModal">
                   <div class = "modal-dialog modal-dialog-centered">
                     <div class = "modal-content">
@@ -146,21 +152,10 @@
           </div>
         </div>
       </div>
-    
-    <div class = "col-md-6">
-      <div class = "card" id = "Cloudy Card">
-        <div class = "card-body" id = "Cloudy Body">
-          <h5 class="card-title">How Cloudy Will it Be?</h5>
-          <canvas id = "cloudChart" aria-label="polar-chart" role="img"></canvas>
-        </div>
-      </div>
     </div>
-  </div>
   </form>
     <script src="index.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/e5eb56307f.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   </body>

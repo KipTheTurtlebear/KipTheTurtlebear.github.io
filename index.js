@@ -1,5 +1,5 @@
-// API call:
-//  https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={a74f97fb835407860672fd2b009d24c5} 
+var hidden = document.getElementById("hidden");
+hidden.addEventListener('click', spin);
 
 function checkData() {
     if(window.sessionStorage.getItem('data')) {
@@ -152,15 +152,17 @@ function checkData() {
              var weeklyHighs = [];
              var weeklyLows = [];
              var weeklyLabels = [];
-
+             const monthNames = ["Jan.", "Feb.", "March", "Apr.", "May", "June",
+             "July", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
+           ];
              //Create label array for next 7 days
              for(var w = 1; w < 8; ++w) {
                 //instantiate new date here
                 z = d.addDays(w);
                 if(z.getDate() < 10)
-                    weeklyLabels.push(" " + (z.getMonth() + 1) + "/" + z.getDate());
+                    weeklyLabels.push(" " + monthNames[(z.getMonth() + 1)] + " " + z.getDate());
                 else
-                    weeklyLabels.push((z.getMonth() + 1) + "/" + z.getDate());
+                    weeklyLabels.push(monthNames[(z.getMonth() + 1)] + " " + z.getDate());
              }
              
              weeklyHighs.push(data.daily[1].temp.max)
@@ -433,6 +435,10 @@ function getWeatherData(position) {
     }
 }
 
+function spin() {
+    document.getElementById("body").style.transform = "rotate(180deg)";    
+}
+
 function fillPage(data) {
         console.log(data);
         var k = document.getElementsByClassName('card');
@@ -582,15 +588,17 @@ function fillPage(data) {
              var weeklyHighs = [];
              var weeklyLows = [];
              var weeklyLabels = [];
-
+             const monthNames = ["Jan.", "Feb.", "March", "Apr.", "May", "June",
+             "July", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
+           ];
              //Create label array for next 7 days
              for(var w = 1; w < 8; ++w) {
                 //instantiate new date here
                 z = d.addDays(w);
                 if(z.getDate() < 10)
-                    weeklyLabels.push(" " + (z.getMonth() + 1) + "/" + z.getDate());
+                    weeklyLabels.push(" " + monthNames[(z.getMonth() + 1)] + " " + z.getDate());
                 else
-                    weeklyLabels.push((z.getMonth() + 1) + "/" + z.getDate());
+                    weeklyLabels.push(monthNames[(z.getMonth() + 1)] + " " + z.getDate());
              }
              
              weeklyHighs.push(data.daily[1].temp.max)
