@@ -534,7 +534,7 @@ function fillPage(data) {
 
         if(data.current.rain) {
             var temp = document.createElement("h6");
-            temp.innerHTML = data.current.rain + "mm of rain has fallen"
+            temp.innerHTML = data.current.rain['1h'] + "mm of rain has fallen"
             header.appendChild(temp);
         }
 
