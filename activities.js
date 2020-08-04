@@ -24,6 +24,7 @@ if(window.sessionStorage.getItem('data') !== null) {
 
 
     var water = document.getElementById('water');
+    console.log(water);
     var temp = getWater(tempSorted);
     if(temp !== null) {
         var day = getDay(tempSorted[temp].sunrise);

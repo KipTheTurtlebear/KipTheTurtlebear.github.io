@@ -1,6 +1,3 @@
-var hidden = document.getElementById("hidden");
-hidden.addEventListener('click', spin);
-
 function checkData() {
     if(window.sessionStorage.getItem('data')) {
         var x = document.getElementById('support');
