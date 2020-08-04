@@ -51,6 +51,11 @@ if(window.sessionStorage.getItem('data') !== null) {
 
 }
 
+Date.prototype.addDays = function(toAdd) {
+    var nextDay = new Date(this.valueOf());
+    nextDay.setDate(nextDay.getDate() + toAdd);
+    return nextDay;
+}
 
 // Returns the hottest clear/cloudy day of the sorted array
 function getWater(days) {

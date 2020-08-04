@@ -432,10 +432,6 @@ function getWeatherData(position) {
     }
 }
 
-function spin() {
-    document.getElementById("body").style.transform = "rotate(180deg)";    
-}
-
 function fillPage(data) {
         console.log(data);
         var k = document.getElementsByClassName('card');
