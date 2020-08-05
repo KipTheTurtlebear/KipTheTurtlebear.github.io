@@ -1,13 +1,12 @@
 function checkData() {
     if(window.sessionStorage.getItem('data')) {
         var x = document.getElementById('support');
-    var ctx = document.getElementById('24hour').getContext('2d');
-    var ctx3 = document.getElementById('tomorrowChart').getContext('2d');
-    var ctx4 = document.getElementById('weeklyChart').getContext('2d');
-    var ctx5 = document.getElementById('cloudChart').getContext('2d');
+        var ctx = document.getElementById('24hour').getContext('2d');
+        var ctx3 = document.getElementById('tomorrowChart').getContext('2d');
+        var ctx4 = document.getElementById('weeklyChart').getContext('2d');
+        var ctx5 = document.getElementById('cloudChart').getContext('2d');
 
         data = JSON.parse(window.sessionStorage.getItem('data'));
-        console.log("Testing...");
         console.log(data);
         
         var k = document.getElementsByClassName('card');
