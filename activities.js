@@ -74,7 +74,7 @@ if(window.sessionStorage.getItem('data') !== null) {
         day = (z.getMonth() + 1) + "/" + z.getDate();
         cozy.innerText = "The Best Day for a cozy day inside is " + days[z.getDay()] + ", " + day + " ⛈️";
     } else {
-        cozy.innerText = "You can have a cozy day inside anyday, even if it's not raining ⛈️";
+        cozy.innerText = "You can have a cozy day inside anyday, even if it's a warm sunny day";
     }
 
 }
