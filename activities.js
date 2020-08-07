@@ -2,6 +2,8 @@ var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 
 if(window.sessionStorage.getItem('data') !== null) {
     var data = JSON.parse(window.sessionStorage.getItem('data'));
+    console.log("Data:");
+    console.log(data);
     var k = document.getElementsByClassName('card');
     for(var i = 0; i < k.length; ++i) {
         k[i].style.visibility = "visible";
@@ -41,13 +43,20 @@ if(window.sessionStorage.getItem('data') !== null) {
 
     var water = document.getElementById('water');
     console.log(water);
-    var temp = getWater(tempSortedHigh);
-    if(temp !== null) {
-        var day = getDay(tempSortedHigh[temp].sunrise);
-        z = new Date();
-        z = z.addDays(day);
-        day = (z.getMonth() + 1) + "/" + z.getDate();
-        water.innerText = "The Best Day for Water Activities is " + days[z.getDay()] + ", " + day + " 🚣";
+    var temp = getWater(tempSortedHigh);    // This returns an array of integers
+    if(temp.length) {
+        var i = 0;
+        console.log(temp[7])
+        while(i < temp.length) {
+            console.log(tempSortedHigh[temp[i]])
+            var day = getDay(tempSortedHigh[temp[i]].sunrise);
+            z = new Date();
+            z = z.addDays(day);
+            date = (z.getMonth() + 1) + "/" + z.getDate();
+            water.innerText = water.innerText + days[z.getDay()] + ", " + date + '\n' +
+            "High is " + data.daily[day].temp.max + "°F, and weather is: " + data.daily[day].weather[0].description + '\n\n';
+            i++;
+        }
     }
     else {
         water.innerText = "There's no good day for water activities :(" ;
@@ -55,24 +64,35 @@ if(window.sessionStorage.getItem('data') !== null) {
 
     var picnic = document.getElementById('picnic');
     var temp = getPicnic(tempSortedHigh);
-    if(temp !== null) {
-        day = getDay(tempSortedHigh[temp].sunrise);
-        z = new Date();
-        z = z.addDays(day);
-        day = (z.getMonth() + 1) + "/" + z.getDate();
-        picnic.innerText = "The Best Day for a Picnic is " + days[z.getDay()] + ", " + day + " 🏞️";
+    if(temp.length) {
+        var i = 0;
+        while(i < temp.length) {
+            var day = getDay(tempSortedHigh[temp[i]].sunrise);
+            z = new Date();
+            z = z.addDays(day);
+            date = (z.getMonth() + 1) + "/" + z.getDate();
+            picnic.innerText = picnic.innerText + days[z.getDay()] + ", " + date + '\n' +
+            "High is " + data.daily[day].temp.max + "°F, and weather is: " + data.daily[day].weather[0].description + '\n\n';
+            ++i;
+        }
     } else {
         picnic.innerText = "There is no good day for a picnic :(";
     }
 
     var cozy = document.getElementById('cozy');
     var temp = getCozy(tempSortedLow);
-    if(temp !== null) {
-        day = getDay(tempSortedLow[temp].sunrise);
-        z = new Date();
-        z = z.addDays(day);
-        day = (z.getMonth() + 1) + "/" + z.getDate();
-        cozy.innerText = "The Best Day for a cozy day inside is " + days[z.getDay()] + ", " + day + " ⛈️";
+    if(temp.length) {
+        console.log("entered cozy")
+        var i = 0;
+        while(i < temp.length) {
+            var day = getDay(tempSortedLow[temp].sunrise);
+            z = new Date();
+            z = z.addDays(day);
+            date = (z.getMonth() + 1) + "/" + z.getDate();
+            cozy.innerText = cozy.innerText + days[z.getDay()] + ", " + date + "\n" +
+            "High is " + data.daily[day].temp.max + "°F, and weather is: " + data.daily[day].weather[0].description + '\n\n';
+
+        }
     } else {
         cozy.innerText = "You can have a cozy day inside anyday, even if it's a warm sunny day";
     }
@@ -85,54 +105,51 @@ Date.prototype.addDays = function(toAdd) {
     return nextDay;
 }
 
-// Returns the hottest clear/cloudy day of the sorted array
+// Returns the hottest clear/cloudy days of the sorted array
 function getWater(days) {
+    var hotDays = [];
+    var k = 0;
     for(var i = 0; i < days.length; ++i) {
-        if(days[i].temp.max < 75) {
-            return null
-        }
-        else {
+        if(days[i].temp.max >= 75) {
             if(days[i].weather[0].id >= 800) {
-                let des = document.getElementById("waterDes");
-                des.innerText = "High is " + days[i].temp.max + "°F, and weather is: " + days[i].weather[0].description;
-                return i;
+                hotDays[k] = i;
+                ++k;
             }
         }
     }
+    return hotDays;
 }
 
-// Returns the warmest day where temperature is moderate and weather is clear/cloudy
+// Returns the warmest days where temperature is moderate and weather is clear/cloudy
 function getPicnic(days) {
+    var hotDays = [];
+    var k = 0;
     for(var i = 0; i < days.length; ++i) {
-        if(days[i].temp.max < 65) {
-            return null
-        }
-        else if (days[i].temp.max >= 65 && days[i].temp.max < 90) {
+        if(days[i].temp.max > 65 && days[i].temp.max < 80) {
             if(days[i].weather[0].id >= 800) {
-                let des = document.getElementById("picnicDes");
-                des.innerText = "High is " + days[i].temp.max + "°F, and weather is: " + days[i].weather[0].description;
-                return i;
+                hotDays[k] = i;
+                ++k;
             }
         }
     }
-    return null;
+    return hotDays;
 }
 
 // Returns the coolest day where weather is rainy or snowy
 function getCozy(days) {
+    var cozyDays = [];
+    var k = 0;
     for(var i = 0; i < days.length; ++i) {
-        if(days[i].temp.max > 65) {
-            return null
-        }
-        else if (days[i].temp.max <= 65) {
+        if (days[i].temp.max <= 65) {
             if(days[i].weather[0].id >= 200 && days[i].weather[0].id < 700) {
-                let des = document.getElementById("cozyDes");
-                des.innerText = "High is " + days[i].temp.max + "°F, and weather is: " + days[i].weather[0].description;
-                return i;
+                cozyDays[k] = i;
+                ++k;
             }
         }
     }
-    return null;
+    console.log("CozyDays: ")
+    console.log(cozyDays)
+    return cozyDays;
 }
 
 // Returns the day number that matches the sorted day sunrise
