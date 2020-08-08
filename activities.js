@@ -1,5 +1,67 @@
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+
+
+function getWeather(type, tempSortedHigh, tempSortedLow) {
+
+    switch(type) {
+        case 'water':
+            var list = document.getElementById('water');
+            var temp = getWater(tempSortedHigh);    // This returns an array of integers
+            break;
+        case 'picnic':
+            var list = document.getElementById('picnic');
+            var temp = getPicnic(tempSortedHigh);    // This returns an array of integers
+            break;
+        case 'cozy':
+            var list = document.getElementById('cozy');
+            var temp = getCozy(tempSortedLow);    // This returns an array of integers
+            break;
+    }
+
+    console.log(list);
+
+    if(temp.length) {
+        var i = 0;
+        while(i < temp.length) {
+            console.log(tempSortedHigh[temp[i]])
+            var day = getDay(tempSortedHigh[temp[i]].sunrise);
+            z = new Date();
+            z = z.addDays(day);
+            date = (z.getMonth() + 1) + "/" + z.getDate();
+            var dayList = document.createElement('li');
+            dayList.setAttribute('id', 'goodDay');
+            dayList.appendChild(document.createTextNode(days[z.getDay()] + ", " + date + '\n' +
+            "High is " + data.daily[day].temp.max + "°F, and weather is: " + data.daily[day].weather[0].description));
+            list.appendChild(dayList);
+            i++;
+        }
+    }
+    else {
+        var dayList = document.createElement('li');
+        dayList.appendChild(document.createTextNode("There's no good day for this activity :("));
+        dayList.setAttribute('id', 'goodDay');
+        list.appendChild(dayList);
+    }
+} 
+
+
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "initial") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "initial";
+    }
+  });
+} 
+
 if(window.sessionStorage.getItem('data') !== null) {
     var data = JSON.parse(window.sessionStorage.getItem('data'));
     console.log("Data:");
@@ -41,25 +103,35 @@ if(window.sessionStorage.getItem('data') !== null) {
 
     console.log(tempSortedLow);
 
+    getWeather('water', tempSortedHigh, tempSortedLow);
+    getWeather('picnic', tempSortedHigh, tempSortedLow);
+    getWeather('cozy', tempSortedHigh, tempSortedLow);
+
+
+    //this code is unnecessary but I'm too afraid to delete it
+/*
     var water = document.getElementById('water');
     console.log(water);
     var temp = getWater(tempSortedHigh);    // This returns an array of integers
     if(temp.length) {
         var i = 0;
-        console.log(temp[7])
         while(i < temp.length) {
             console.log(tempSortedHigh[temp[i]])
             var day = getDay(tempSortedHigh[temp[i]].sunrise);
             z = new Date();
             z = z.addDays(day);
             date = (z.getMonth() + 1) + "/" + z.getDate();
-            water.innerText = water.innerText + days[z.getDay()] + ", " + date + '\n' +
-            "High is " + data.daily[day].temp.max + "°F, and weather is: " + data.daily[day].weather[0].description + '\n\n';
+            var dayList = document.createElement('li');
+            dayList.appendChild(document.createTextNode(days[z.getDay()] + ", " + date + '\n' +
+            "High is " + data.daily[day].temp.max + "°F, and weather is: " + data.daily[day].weather[0].description));
+            water.appendChild(dayList);
             i++;
         }
     }
     else {
-        water.innerText = "There's no good day for water activities :(" ;
+        var dayList = document.createElement('li');
+        dayList.appendChild(document.createTextNode("There's no good day for water activities :("));
+        water.appendChild(dayList);
     }
 
     var picnic = document.getElementById('picnic');
@@ -96,7 +168,7 @@ if(window.sessionStorage.getItem('data') !== null) {
     } else {
         cozy.innerText = "You can have a cozy day inside anyday, even if it's a warm sunny day";
     }
-
+*/
 }
 
 Date.prototype.addDays = function(toAdd) {
