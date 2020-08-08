@@ -9,5 +9,5 @@
 ### How do I access it?
  It can be accessed [here](https://kiptheturtlebear.github.io/index.html)
 ### What additional features are planned?
- - Currently the activity page only suggests the first "good day" for a given activity. I'd like this to suggest all "good days" in the week instead.
+ - ~~Currently the activity page only suggests the first "good day" for a given activity. I'd like this to suggest all "good days" in the week instead~~ Finished
  - A map would be cool to have, but I'm unsure of how it would help the usability or provide more features
