@@ -1,4 +1,12 @@
 /* CSS reset */
+:root {
+    --main-color: rgb(19, 95, 128);
+    --main-color-semi: rgba(19, 95, 128, 0.8);
+    --main-color-faint: rgba(19, 95, 128, 0.3);
+    --sec-color: #2BBEFF;
+    --tri-color: #F5F6F3;
+}
+
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
     margin:0;
     padding:0;
@@ -8,18 +16,18 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 html,body {
     margin:0;
     padding:0;
-    background-color: rgb(19, 95, 128) !important;
+    background-color: var(--main-color) !important;
     padding-top:40px;
 }
 
 .navbar {
-    background-color: #2BBEFF; 
+    background-color: var(--sec-color); 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .collapsible {
-    background-color:  rgb(19, 95, 128);
-    color: #F5F6F3;
+    background-color:  var(--main-color);
+    color: var(--tri-color);
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -28,29 +36,28 @@ html,body {
     outline: none;
     font-size: 15px;
     border-radius: 4px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 10px;
 }
 
-.active, .collapsible:hover {
-    background-color: rgba(19, 95, 128, 0.8);
+.collapsible:hover {
+    background-color: var(--main-color-semi);
 }
 
 .content {
     padding: 0 18px;
     display: none;
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: var(--tri-color);
 }
 
 .navbar a {
-    color: #F5F6F3;
+    color: var(--tri-color);
     text-shadow: 5px;
 
 }
 
 .nav-item a {
-    color: #F5F6F3;
+    color: var(--tri-color);
     font-size: 18px;
     text-shadow: 5px;
 
@@ -58,7 +65,7 @@ html,body {
 
 .navbar a:hover {
     font-style: italic;
-    color: #F5F6F3;
+    color: var(--tri-color);
 
 }
 
@@ -68,7 +75,7 @@ html,body {
 }
 
 #support {
-    color: #F5F6F3;
+    color: var(--tri-color);
     font-weight: bold;
 }
 
@@ -76,7 +83,7 @@ html,body {
     visibility: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 5px;
-    background-color: rgb(247, 247, 247) !important;
+    background-color: var(--tri-color) !important;
 }
 
 #Activity#Card {
@@ -88,11 +95,11 @@ html,body {
 }
 
 .navbar-toggler {
-    background-color: #F5F6F3 !important;
+    background-color: var(--tri-color) !important;
 }
 
 i {
-    color: #2BBEFF;
+    color: var(--sec-color);
 }
 
 .modal {
@@ -115,9 +122,9 @@ i {
     font-size: 20px;
     margin-left: 5px;
     border-radius: 4px;
-    background-color: rgb(19, 95, 128);
-    border-color: #F5F6F3;
-    color: #F5F6F3;
+    background-color: var(--main-color);
+    border-color: var(--tri-color);
+    color: var(--tri-color);
     font-weight: 600;
 }
 
@@ -129,14 +136,14 @@ i {
 
 #useMy:hover, #getZip:hover {
     cursor: pointer;
-    color: #2BBEFF;
-    border-color: #2BBEFF
+    color: var(--sec-color);
+    border-color: var(--sec-color)
 }
 
 #useMy:active, #getZip:active {
-    background-color: rgb(14, 73, 99);
-    border-color: #2BBEFF;
-    color: #2BBEFF;
+    background-color: var(--main-color);
+    border-color: var(--sec-color);
+    color: var(--sec-color);
     transform: translateY(4px);
 }
 
@@ -145,7 +152,7 @@ i {
 }
 
 .row {
-    background-color: rgb(19, 95, 128);
+    background-color: var(--main-color);
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -155,7 +162,7 @@ h5.card-subtitle {
 }
 
 img#weatherIcon {
-    background-color:  rgba(19, 95, 128, 0.3);
+    background-color:  var(--main-color-faint);
     border-radius: 50%;
     margin: 0;
     padding: 0;
@@ -172,7 +179,7 @@ img#weatherIcon {
 }
 
 #weather1.row, #weather2.row, #weather3.row, #weather4.row, #weather5.row, #weather6.row, #weather7.row   {
-    background-color:  rgba(19, 95, 128, 0.3);
+    background-color:  var(--main-color-faint);
     margin-bottom: 10px;
     border-radius: 10px;
 }
