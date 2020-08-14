@@ -14,3 +14,5 @@
  - ~~Style Activity page better~~ Finished
  - ~~Dark Mode~~ Finished
  - A map would be cool to have, but I'm unsure of how it would help the usability or provide more features
+ 
+ ### For License Information, view the License file within the repo
