@@ -1,10 +1,22 @@
 /* CSS reset */
-:root {
+:root[color-mode="light"] {
     --main-color: rgb(19, 95, 128);
     --main-color-semi: rgba(19, 95, 128, 0.8);
     --main-color-faint: rgba(19, 95, 128, 0.3);
     --sec-color: #2BBEFF;
     --tri-color: #F5F6F3;
+    --font-color: #212121;
+    --button-color: #F5F6F3;
+}
+
+:root[color-mode = "dark"] {
+    --main-color: #212121;
+    --main-color-semi: rgba(19, 95, 128, 0.8);
+    --main-color-faint: rgba(19, 95, 128, 0.3);
+    --sec-color: rgb(19, 95, 128);
+    --tri-color: #323232;
+    --font-color: #797979;
+    --button-color: #797979;
 }
 
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
@@ -37,6 +49,7 @@ html,body {
     font-size: 15px;
     border-radius: 4px;
     margin-top: 10px;
+    color: var(--button-color);
 }
 
 .collapsible:hover {
@@ -50,20 +63,21 @@ html,body {
     background-color: var(--tri-color);
 }
 
-.navbar a {
+.navbar a, .navbar button{
     color: var(--tri-color);
     text-shadow: 5px;
 
 }
 
-.nav-item a {
+.nav-item a, .navitem button {
     color: var(--tri-color);
+    background-color: var(--sec-color);
     font-size: 18px;
     text-shadow: 5px;
 
 }
 
-.navbar a:hover {
+.navbar a:hover button:hover{
     font-style: italic;
     color: var(--tri-color);
 
@@ -124,7 +138,7 @@ i {
     border-radius: 4px;
     background-color: var(--main-color);
     border-color: var(--tri-color);
-    color: var(--tri-color);
+    color: var(--button-color);
     font-weight: 600;
 }
 
@@ -159,6 +173,15 @@ i {
 
 h5.card-subtitle {
     margin-bottom: 20px;
+    color: var(--font-color);
+}
+
+h5.card-title {
+    color: var(--font-color);
+}
+
+h6#todayFeel, h6#todayCloud, p, li {
+    color: var(--font-color);
 }
 
 img#weatherIcon {
@@ -186,10 +209,11 @@ img#weatherIcon {
 
 #day1,#day2,#day3,#day4,#day5,#day6,#day7,#des1,#des2,#des3,#des4,#des5,#des6,#des7 {
     padding-top: 10px;
+    color: var(--font-color);
 }
 
 #img1,#img2,#img3,#img4,#img5,#img6,#img7 {
-    padding-right: 50px;
+    padding-right: 0px;
 }
 
 @media(min-width: 1080) {
