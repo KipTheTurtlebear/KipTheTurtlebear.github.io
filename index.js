@@ -75,8 +75,12 @@ function checkData() {
         });
 
         var header = document.getElementById("todayTemp");
-        header.innerText = header.innerText.concat(data.current.temp + "°F");
-        //header.appendChild(text);
+        if(testNice(data.current.temp)) {
+            header.innerText = "Current Temperature: " + data.current.temp + "°F      ....nice";
+        }
+        else {
+            header.innerText = "Current Temperature: " + data.current.temp + "°F";
+        }
 
         var temp = document.getElementById("todayFeel");
         var text = document.createTextNode(data.current.feels_like + "°F");
@@ -509,7 +513,12 @@ function fillPage(data) {
         });
 
         var header = document.getElementById("todayTemp");
-        header.innerText = "Current Temperature: " + data.current.temp + "°F";
+        if(testNice(data.current.temp)) {
+            header.innerText = "Current Temperature: " + data.current.temp + "°F      ....nice";
+        }
+        else {
+            header.innerText = "Current Temperature: " + data.current.temp + "°F";
+        }
         //header.appendChild(text);
 
         var feel = document.getElementById("todayFeel");
@@ -726,4 +735,14 @@ function fillPage(data) {
 
 }
 
+function testNice(num) {
+    if(num.toString().match(/^69.[0-9]*/)) {
+        console.log("nice");
+        return true;
+    }
+    else {
+        console.log("not nice");
+        return false;
+    }
+}
 
